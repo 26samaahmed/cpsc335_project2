@@ -1,30 +1,42 @@
 import os
 import heapq
+from tkinter import *
 from collections import Counter, namedtuple
 
 """
 NOTES
 
-added a getfilepath() for convenience
-file size takes a file path, you can store the path gotten by getfilepath and call size with that
+You can store the path gotten by getfilepath and call size with that
+You can use the displayfile to display the contents of the file to a
+ specified text box
 
 FOR BACKEND:
-decompress_file looks for a binary file called 'compressed.bin' (binary) and another file 'huffman_dict.txt'
+decompress_file looks for a binary file called 'compressed.bin'
+ (binary) and another file 'huffman_dict.txt'
 
 FOR FRONTEND:
-There is a function that determines if output == input, feel free to use it if you want, thought
-it might help if you wanted the GUI to display that they are equal
+There is a function that determines if output == input, feel free to
+ use it if you want, thought it might help if you wanted the GUI to
+ display that they are equal
 """
 
 def getfilepath(filename):
     return os.path.abspath(filename)
 
-def getfilesize(file_path):
+def getfilesize(file_path):             # file size takes a file path
     if not os.path.exists(file_path):
         return 0
     else:
         return os.path.getsize(file_path)
     
+def displayfile(file_path, text_box):
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            text_box.insert(END, content)
+    except FileNotFoundError:
+        print("File not found")
+
 def decompress_file():
     try:
         with open("huffman_dict.txt", "r", encoding='utf-8') as dict_file:
