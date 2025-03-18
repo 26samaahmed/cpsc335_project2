@@ -41,9 +41,20 @@ def decompress_file():
     try:
         with open("huffman_dict.txt", "r", encoding='utf-8') as dict_file:
             huffman_codes = {}
+            padding_length = 0
             for line in dict_file:
-                char, code = line.strip().split(":")
-                huffman_codes[code] = char
+                line = line.rstrip()
+                if not line:
+                    continue
+                if line.startswith('padding'):
+                    padding_length = int(line.split(':')[1])
+                else:
+                    parts = line.split(":", 1)
+                    if len(parts) == 2:
+                        char, code = parts
+                        huffman_codes[code] = char
+                    else:
+                        print(f"Malformed line, skipping: {line}")
     except FileNotFoundError:
         print("File huffman_dict.txt not found")
         return None, False
@@ -56,6 +67,9 @@ def decompress_file():
         return None, False
     
     binary_string = ''.join(f"{byte:08b}" for byte in byte_data)
+
+    if padding_length > 0:
+        binary_string = binary_string[:-padding_length]
 
     decoded_text = ""
     temp_code = ""

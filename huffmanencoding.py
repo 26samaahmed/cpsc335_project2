@@ -58,6 +58,10 @@ def compress_file(file_path):
     # Encode text
     encoded_text = ''.join(huffman_codes[char] for char in text)
 
+    #Find padding
+    padding_length = (8 - len(encoded_text) % 8) % 8
+    padded_encoded = encoded_text + '0' * padding_length
+
     # Save encoded text to binary file
     with open('compressed.bin', 'wb') as bin_file:
         bin_file.write(int(encoded_text, 2).to_bytes((len(encoded_text) + 7) // 8, byteorder='big'))
