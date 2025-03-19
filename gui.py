@@ -45,7 +45,7 @@ comparison_label.pack()
 # Text box with scrollbar for huffman binary code
 Label(root, text="Huffman Codes:", font=("Courier New", 16, "bold"), fg="white", wraplength=500, justify="center", background="#002438").pack()
 text_frame = Frame(root)
-text_frame.pack(pady=20)
+text_frame.pack(pady=10)
 text_frame.configure(background='#002438', borderwidth=1)
 scrollbar = Scrollbar(text_frame)
 scrollbar.pack(side=RIGHT, fill=Y)
@@ -60,7 +60,7 @@ decompress_file_button.configure(background='white', font=("Courier New", 12, 'b
 
 Label(root, text="Decoded Text:", font=("Courier New", 16, "bold"), fg="white", wraplength=500, justify="center", background="#002438").pack()
 text_frame = Frame(root)
-text_frame.pack(pady=20)
+text_frame.pack(pady=10)
 text_frame.configure(background='#002438', borderwidth=1)
 scrollbar = Scrollbar(text_frame)
 scrollbar.pack(side=RIGHT, fill=Y)
