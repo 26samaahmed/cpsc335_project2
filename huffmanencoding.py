@@ -70,5 +70,9 @@ def compress_file(file_path):
     # Save Huffman dictionary
     with open('huffman_dict.txt', 'w') as dict_file:
         for char, code in huffman_codes.items():
-            dict_file.write(f'{char}:{code}\n')
+            if char == '\n':
+                dict_file.write(f'\\n:{code}\n')  # Store newlines as \n explicitly
+            else:
+                dict_file.write(f'{char}:{code}\n')
+
     print("Huffman dictionary saved as 'huffman_dict.txt'")

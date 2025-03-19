@@ -52,6 +52,8 @@ def decompress_file():
                     parts = line.split(":", 1)
                     if len(parts) == 2:
                         char, code = parts
+                        if char == "\\n":
+                            char = "\n"
                         huffman_codes[code] = char
                     else:
                         print(f"Malformed line, skipping: {line}")
@@ -78,6 +80,7 @@ def decompress_file():
         if temp_code in huffman_codes:
             decoded_text += huffman_codes[temp_code]
             temp_code = ""
+    print(decoded_text)
     return decoded_text
 
 def output_equals_input(decoded_text):
