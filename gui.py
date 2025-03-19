@@ -35,7 +35,7 @@ root.configure(background='#002438')
 Label(root, text="📦 Huffman Coding Compression Tool", font=("Courier New", 18, "bold"), fg="white", wraplength=500, justify="center", bg='#002438', pady=10).pack()
 selected_file_button = Button(root, text="📩 Select File", command=select_file)
 selected_file_button.pack(pady=10)
-selected_file_button.configure(background='#002438', font=("Courier New", 12, 'bold'), fg='black', padx=10, pady=5, bg='#002438')
+selected_file_button.configure(background='white', font=("Courier New", 12, 'bold'), fg='black', padx=10, pady=5)
 
 # Text for size comparisons
 comparison_line = f"Compression details will appear here."
@@ -56,7 +56,7 @@ scrollbar.config(command=text_box1.yview, background='#002438')
 # Decompress file button
 decompress_file_button = Button(root, text="🔄 Decompress File", command=decompress_file)
 decompress_file_button.pack(pady=20)
-decompress_file_button.configure(background='white', font=("Courier New", 12, 'bold'), fg='black', padx=10, pady=5, bg='#002438')
+decompress_file_button.configure(background='white', font=("Courier New", 12, 'bold'), fg='black', padx=10, pady=5)
 
 Label(root, text="Decoded Text:", font=("Courier New", 16, "bold"), fg="white", wraplength=500, justify="center", background="#002438").pack()
 text_frame = Frame(root)
