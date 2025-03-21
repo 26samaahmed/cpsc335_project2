@@ -58,7 +58,7 @@ def compress_file(file_path):
     # Encode text
     encoded_text = ''.join(huffman_codes[char] for char in text)
 
-    #Find padding
+    # Find padding
     padding_length = (8 - len(encoded_text) % 8) % 8
     padded_encoded = encoded_text + '0' * padding_length
 
