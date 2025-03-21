@@ -1,7 +1,5 @@
 import os
-import heapq
 from tkinter import *
-from collections import Counter, namedtuple
 
 """
 NOTES
